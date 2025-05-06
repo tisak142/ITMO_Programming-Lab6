@@ -10,7 +10,6 @@ public class MusicBandParser {
 
     public static MusicBand parse(Element element) throws ParseException {
         MusicBand.Builder builder = new MusicBand.Builder();
-
         // Парсинг названия
         String name = XmlUtils.getElementValue(element, "name");
         if (name == null || name.trim().isEmpty()) {

@@ -1,7 +1,8 @@
 package commands;
 
-import javax.sound.midi.Receiver;
-import java.io.Reader;
+import da.Receiver;
+
+import java.time.LocalDate;
 
 public class InfoCommand implements Command {
     private final Receiver receiver;
@@ -15,6 +16,12 @@ public class InfoCommand implements Command {
             System.err.println("This command does not take any arguments");
             return;
         }
+        String type = "Тип коллекции: " + receiver.getCollectionType();
+        String length = "Размер коллекции: " + receiver.getNumBands();
+        String time = "Дата инициализации коллекции: " + receiver.getDate();
+        System.out.println(type);
+        System.out.println(length);
+        System.out.println(time);
     }
 
     @Override

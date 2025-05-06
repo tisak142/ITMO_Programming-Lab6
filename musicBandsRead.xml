@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <musicBands au="1g\xyi">
     <musicBand>
-        <name>Pink Floyd</name>
+        <name>2</name>
         <coordinates>
             <x>10.5</x>
             <y>860</y>
@@ -9,7 +9,7 @@
         <numberOfParticipants>5</numberOfParticipants>
         <genre>JAZZ</genre>
         <frontMan>
-            <name>JACK</name>
+            <frontManName>JACK</frontManName>
             <birthday>2005-12-12</birthday>
             <hairColor>GREEN</hairColor>
             <nationality>SPAIN</nationality>
@@ -24,7 +24,7 @@
         <numberOfParticipants>4</numberOfParticipants>
         <genre>BLUES</genre>
         <frontMan>
-            <name>Robert Plant</name>
+            <frontManName>Robert Plant</frontManName>
             <birthday>1948-08-20</birthday>
             <hairColor>BLUE</hairColor>
             <nationality>CHINA</nationality>

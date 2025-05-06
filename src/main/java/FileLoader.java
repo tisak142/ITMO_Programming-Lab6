@@ -42,18 +42,13 @@ public class FileLoader {
                     if (band != null) {
                         musicBands.add(band);
                     } else {
-                        System.err.println("Error parsing music band at index " + i + ". Skipping to the next band.");
+                        System.err.println("Error parsing music band at index " + (i + 1) + ". Skipping to the next band.");
                     }
                 }
             }
 
         } catch (Exception e) {
             System.err.println("Error loading data from file: " + e.getMessage());
-        }
-
-        if(musicBands.isEmpty()){
-            System.out.println("There is not a single valid group in the file.");
-            return null;
         }
         return musicBands;
     }

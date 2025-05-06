@@ -1,19 +1,24 @@
-import commands.Command;
-import commands.HelpCommand;
+import commands.*;
+import da.MusicBandConsoleCreator;
+import da.Receiver;
 
 import java.util.HashMap;
 
 public class Invoker {
     private static final HashMap<String, Command> commands = new HashMap<>(); // Хранилище команд, где ключ — название команды, а значение — объект команды.
     private final Receiver receiver;
-    {
-        // Инициализация команд и добавление их в хранилище
+    private final MusicBandConsoleCreator musicBandConsoleCreator;
+
+
+    public Invoker(Receiver receiver, MusicBandConsoleCreator musicBandConsoleCreator) {
+        this.receiver = receiver;
+        this.musicBandConsoleCreator = musicBandConsoleCreator;
         commands.put("help", new HelpCommand());
-//        commands.put("info", new InfoCommand());
-//        commands.put("add", new AddCommand());
-//        commands.put("show", new ShowCommand());
-//        commands.put("update id", new UpdateIdCommand());
-//        commands.put("remove_by_id", new RemoveCommand());
+        commands.put("info", new InfoCommand(receiver));
+        commands.put("add", new AddCommand(receiver, musicBandConsoleCreator));
+        commands.put("show", new ShowCommand(receiver));
+        commands.put("update_id", new UpdateIdCommand(receiver, musicBandConsoleCreator));
+        commands.put("remove_by_id", new RemoveByIdCommand(receiver));
 //        commands.put("clear", new ClearCommand());
 //        commands.put("save", new SaveCommand());
 //        commands.put("execute_script", new ExecuteScriptCommand(this));
@@ -24,10 +29,7 @@ public class Invoker {
 //        commands.put("average_of_number_of_participants", new AverageParticipantsCommand());
 //        commands.put("max_by_genre", new MaxByGenreCommand());
 //        commands.put("group_counting_by_name", new CountingByNameCommand());
-    }
 
-    public Invoker(Receiver receiver) {
-        this.receiver = receiver;
     }
 
     public void invoke(ParsedCommand parsedCommand) {

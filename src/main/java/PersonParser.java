@@ -14,7 +14,7 @@ public class PersonParser {
         Person.PersonBuilder builder = new Person.PersonBuilder(); // Используем Person.builder()
 
         // Парсинг имени
-        String name = XmlUtils.getElementValue(element, "name");
+        String name = XmlUtils.getElementValue(element, "frontManName");
         if (name == null || name.trim().isEmpty()) {
             System.err.println("Error: Person name cannot be null or empty");
             return null;

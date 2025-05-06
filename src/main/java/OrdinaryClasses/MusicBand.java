@@ -56,6 +56,7 @@ public class MusicBand {
         return new Builder();
     }
 
+
     public static class Builder {
         private static final AtomicInteger idGenerator = new AtomicInteger(1);
 
@@ -100,6 +101,11 @@ public class MusicBand {
             return this;
         }
 
+        public Builder setId(Integer id) {
+            this.id = id;
+            return this;
+        }
+
         public MusicBand build() {
             // Проверка обязательных полей
             if (name == null) {
@@ -124,5 +130,18 @@ public class MusicBand {
 
             return new MusicBand(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "MusicBand{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", creationDate=" + creationDate +
+                ", numberOfParticipants=" + numberOfParticipants +
+                ", genre=" + genre +
+                ", frontMan=" + frontMan +
+                '}';
     }
 }

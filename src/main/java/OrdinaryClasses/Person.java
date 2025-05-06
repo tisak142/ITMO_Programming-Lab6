@@ -27,7 +27,7 @@ public class Person {
         private Color hairColor;
         private Country nationality;
 
-        public PersonBuilder name(String name) {
+        public PersonBuilder setName(String name) {
             this.name = Objects.requireNonNull(name, "Name cannot be null");
             if (name.trim().isEmpty()) {
                 throw new IllegalArgumentException("Name cannot be empty");

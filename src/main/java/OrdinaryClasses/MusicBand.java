@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MusicBand {
+public class MusicBand implements Comparable<MusicBand> {
     private final Integer id;                // Автогенерация, > 0, уникальное
     private final String name;               // Не null, не пустое
     private final Coordinates coordinates;   // Не null
@@ -22,6 +22,13 @@ public class MusicBand {
         this.numberOfParticipants = builder.numberOfParticipants;
         this.genre = builder.genre;
         this.frontMan = builder.frontMan;
+    }
+
+    @Override
+    public int compareTo(MusicBand o) {
+        Integer len1 = name.length();
+        Integer len2 = o.name.length();
+        return len1.compareTo(len2);
     }
 
     public Integer getId() {

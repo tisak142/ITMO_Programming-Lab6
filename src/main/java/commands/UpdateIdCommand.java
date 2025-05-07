@@ -16,6 +16,10 @@ public class UpdateIdCommand implements Command {
     @Override
     public void execute(String... args) {
         try {
+            if (args.length > 1) {
+                System.err.println("Only one argument is allowed");
+                return;
+            }
             int id = Integer.parseInt(args[0]);
             if (!receiver.containId(id)) {
                 System.err.println("Error: element with id " + id + " does not exist in collection.");
@@ -27,6 +31,8 @@ public class UpdateIdCommand implements Command {
 
         } catch (NumberFormatException e) {
             System.err.println("Error: invalid id entered. It should be an integer");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.err.println("Error: you should enter an id");
         }
     }
 

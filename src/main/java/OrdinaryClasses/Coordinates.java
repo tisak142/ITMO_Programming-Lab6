@@ -17,6 +17,14 @@ public class Coordinates {
         }
     }
 
+    public Double getX() {
+        return x;
+    }
+
+    public long getY() {
+        return y;
+    }
+
     public void setX(Double x) {
         if (x == null) {
             throw new IllegalArgumentException("X cannot be null");

@@ -4,11 +4,11 @@ import OrdinaryClasses.MusicBand;
 import da.MusicBandConsoleCreator;
 import da.Receiver;
 
-public class AddCommand implements Command {
+public class AddIfMaxCommand implements Command {
+    private final Receiver receiver;
     private final MusicBandConsoleCreator musicBandConsoleCreator;
-    public final Receiver receiver;
 
-    public AddCommand(Receiver receiver, MusicBandConsoleCreator musicBandConsoleCreator) {
+    public AddIfMaxCommand(Receiver receiver, MusicBandConsoleCreator musicBandConsoleCreator) {
         this.receiver = receiver;
         this.musicBandConsoleCreator = musicBandConsoleCreator;
     }
@@ -20,16 +20,11 @@ public class AddCommand implements Command {
             return;
         }
         MusicBand newBand = musicBandConsoleCreator.createMusicBand();
-        if (newBand != null) {
-            receiver.add(newBand);
-            System.out.println("Music band added successfully.");
-        } else {
-            System.out.println("Failed to add music band.");
-        }
+        receiver.addIfMax(newBand);
     }
 
     @Override
     public String getName() {
-        return "Add";
+        return "addIfMax";
     }
 }

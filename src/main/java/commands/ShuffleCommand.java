@@ -1,13 +1,11 @@
 package commands;
 
-import OrdinaryClasses.MusicBand;
-import da.MusicBandConsoleCreator;
 import da.Receiver;
 
-public class ClearCommand implements Command {
-    public final Receiver receiver;
+public class ShuffleCommand implements Command {
+    private final Receiver receiver;
 
-    public ClearCommand(Receiver receiver) {
+    public ShuffleCommand(Receiver receiver) {
         this.receiver = receiver;
     }
 
@@ -17,13 +15,12 @@ public class ClearCommand implements Command {
             System.err.println("This command does not take any arguments");
             return;
         }
-        receiver.clearCollection();
-        System.out.println("Collection successfully cleaned");
-
+        receiver.shuffle();
+        System.out.println("Collection has just been shuffled");
     }
 
     @Override
     public String getName() {
-        return "Clear";
+        return "shuffle";
     }
 }

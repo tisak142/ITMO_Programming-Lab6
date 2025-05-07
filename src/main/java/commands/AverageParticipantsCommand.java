@@ -1,13 +1,11 @@
 package commands;
 
-import OrdinaryClasses.MusicBand;
-import da.MusicBandConsoleCreator;
 import da.Receiver;
 
-public class ClearCommand implements Command {
-    public final Receiver receiver;
+public class AverageParticipantsCommand implements Command {
+    private final Receiver receiver;
 
-    public ClearCommand(Receiver receiver) {
+    public AverageParticipantsCommand(Receiver receiver) {
         this.receiver = receiver;
     }
 
@@ -17,13 +15,11 @@ public class ClearCommand implements Command {
             System.err.println("This command does not take any arguments");
             return;
         }
-        receiver.clearCollection();
-        System.out.println("Collection successfully cleaned");
-
+        System.out.println("Average number of participants in groups is " + receiver.getAverageNumberOfParticipants());
     }
 
     @Override
     public String getName() {
-        return "Clear";
+        return "AverageOfNumberOfParticipants";
     }
 }

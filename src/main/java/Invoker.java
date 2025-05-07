@@ -19,16 +19,16 @@ public class Invoker {
         commands.put("show", new ShowCommand(receiver));
         commands.put("update_id", new UpdateIdCommand(receiver, musicBandConsoleCreator));
         commands.put("remove_by_id", new RemoveByIdCommand(receiver));
-//        commands.put("clear", new ClearCommand());
-//        commands.put("save", new SaveCommand());
+        commands.put("clear", new ClearCommand(receiver));
+        commands.put("save", new SaveCommand(receiver, System.getenv("WriteMusicBands")));
 //        commands.put("execute_script", new ExecuteScriptCommand(this));
-//        commands.put("exit", new ExitCommand());
-//        commands.put("add_if_max", new AddIfMaxCommand());
-//        commands.put("add_if_min", new AddIfMinCommand());
-//        commands.put("shuffle", new ShuffleCommand());
-//        commands.put("average_of_number_of_participants", new AverageParticipantsCommand());
-//        commands.put("max_by_genre", new MaxByGenreCommand());
-//        commands.put("group_counting_by_name", new CountingByNameCommand());
+        commands.put("exit", new ExitCommand());
+        commands.put("add_if_max", new AddIfMaxCommand(receiver, musicBandConsoleCreator));
+        commands.put("add_if_min", new AddIfMinCommand(receiver, musicBandConsoleCreator));
+        commands.put("shuffle", new ShuffleCommand(receiver));
+        commands.put("average_of_number_of_participants", new AverageParticipantsCommand(receiver));
+        commands.put("max_by_genre", new MaxByGenreCommand(receiver));
+        commands.put("group_counting_by_name", new GroupCountingByName(receiver));
 
     }
 

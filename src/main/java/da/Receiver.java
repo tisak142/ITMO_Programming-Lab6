@@ -1,9 +1,12 @@
 package da;
 
 import OrdinaryClasses.MusicBand;
+import OrdinaryClasses.MusicGenre;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class Receiver {
@@ -75,6 +78,100 @@ public class Receiver {
                 iterator.remove(); // Безопасное удаление
             }
         }
+    }
+
+    public void clearCollection() {
+        bands.clear();
+    }
+
+    public void addIfMax(MusicBand band) {
+        boolean flag = true;
+        for (MusicBand b : bands) {
+            if (band.compareTo(b) <= 0) {
+                flag = false;
+                System.out.println("The band " + band.getName() + " wasn't added to collection");
+                break;
+            }
+        }
+        if (flag) {
+            bands.add(band);
+            System.out.println("Added Music Band - " + band.getName());
+        }
+    }
+
+    public void addIfMin(MusicBand band) {
+        boolean flag = true;
+        for (MusicBand b : bands) {
+            if (band.compareTo(b) >= 0) {
+                flag = false;
+                System.out.println("The band " + band.getName() + " wasn't added to collection");
+                break;
+            }
+        }
+        if (flag) {
+            bands.add(band);
+            System.out.println("Added Music Band - " + band.getName());
+        }
+    }
+
+    public void shuffle() {
+        Collections.shuffle(bands);
+    }
+
+    public float getAverageNumberOfParticipants() {
+        float counter = 0;
+        for (MusicBand band : bands) {
+            if (band.getNumberOfParticipants() != null) {
+                counter += band.getNumberOfParticipants();
+            }
+        }
+        return counter / bands.size();
+    }
+
+    public void maxByGenre() {
+        if (bands.isEmpty()) {
+            System.out.println("The collection is empty.");
+            return;
+        }
+
+        MusicBand maxBand = null;
+        MusicGenre maxGenre = null;
+
+        // Находим первую группу с жанром для инициализации
+        for (MusicBand band : bands) {
+            if (band.getGenre() != null) {
+                maxBand = band;
+                maxGenre = band.getGenre();
+                break; // Выходим из цикла, нашли первую группу с жанром
+            }
+        }
+
+        // Если не нашли ни одной группы с жанром
+        if (maxBand == null) {
+            System.out.println("No music bands with genre found in the collection.");
+            return;
+        }
+
+        // Ищем группу с максимальным жанром
+        for (MusicBand band : bands) {
+            if (band.getGenre() != null && band.getGenre().toString().compareTo(maxGenre.toString()) > 0) {
+                maxBand = band;
+                maxGenre = band.getGenre();
+            }
+        }
+        System.out.println("Music band with maximum genre: " + maxBand);
+    }
+
+    public HashMap<String, Integer> countByName() {
+        HashMap<String, Integer> map = new HashMap<>();
+        for (MusicBand band : bands) {
+            map.put(band.getName(), map.getOrDefault(band.getName(), 0) + 1);
+        }
+        return map;
+    }
+
+    public ArrayList<MusicBand> getBands() {
+        return bands;
     }
 
 }

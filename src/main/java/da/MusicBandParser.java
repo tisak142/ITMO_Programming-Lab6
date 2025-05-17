@@ -1,9 +1,16 @@
+package da;
+
 import OrdinaryClasses.Coordinates;
 import OrdinaryClasses.MusicBand;
 import OrdinaryClasses.MusicGenre;
 import OrdinaryClasses.Person;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.StringReader;
 import java.text.ParseException;
 
 public class MusicBandParser {
@@ -89,4 +96,6 @@ public class MusicBandParser {
             return null;
         }
     }
+
+
 }

@@ -1,6 +1,6 @@
+package da;
+
 import commands.*;
-import da.MusicBandConsoleCreator;
-import da.Receiver;
 
 import java.util.HashMap;
 
@@ -21,7 +21,7 @@ public class Invoker {
         commands.put("remove_by_id", new RemoveByIdCommand(receiver));
         commands.put("clear", new ClearCommand(receiver));
         commands.put("save", new SaveCommand(receiver, System.getenv("WriteMusicBands")));
-//        commands.put("execute_script", new ExecuteScriptCommand(this));
+//        commands.put("execute_script", new ExecuteScriptCommand();
         commands.put("exit", new ExitCommand());
         commands.put("add_if_max", new AddIfMaxCommand(receiver, musicBandConsoleCreator));
         commands.put("add_if_min", new AddIfMinCommand(receiver, musicBandConsoleCreator));
@@ -38,7 +38,7 @@ public class Invoker {
             if (command != null) {
                 command.execute(parsedCommand.getArgs());
             } else {
-                System.out.println("Неизвестная команда: " + parsedCommand.getCommandName());
+                System.out.println("Unknown command: " + parsedCommand.getCommandName());
             }
         }
     }

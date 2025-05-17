@@ -2,7 +2,6 @@ package da;
 
 import OrdinaryClasses.MusicBand;
 import OrdinaryClasses.MusicGenre;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;

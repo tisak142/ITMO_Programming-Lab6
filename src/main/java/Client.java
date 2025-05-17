@@ -1,9 +1,9 @@
 import OrdinaryClasses.*;
 import console.ConsoleReader;
 import console.InputReader;
-import da.MusicBandConsoleCreator;
-import da.Receiver;
+import da.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,8 +24,20 @@ public class Client {
         Scanner scanner = new Scanner(System.in);
         MusicBandConsoleCreator musicBandConsoleCreator = new MusicBandConsoleCreator(scanner);
         Receiver receiver;
-        FileLoader fileLoader = new FileLoader(System.getenv("ReadMusicBands"));
-        ArrayList<MusicBand> musicBands = fileLoader.load();
+        FileLoader fileLoader;
+        ArrayList<MusicBand> musicBands;
+
+        try {
+            String filePath = System.getenv("ReadMusicBands");
+            if (filePath == null || filePath.isEmpty()) {
+                throw new IllegalArgumentException("Environment variable 'ReadMusicBands' is not set.");
+            }
+            fileLoader = new FileLoader(filePath);
+            musicBands = fileLoader.load();
+        } catch (Exception e) {
+            System.err.println("Failed to load music bands from file: " + e.getMessage());
+            return;
+        }
         receiver = new Receiver(musicBands);
         InputReader consoleReader = new ConsoleReader(scanner);
         CommandParser commandParser = CommandParserFactory.getParser(ParserTypes.SIMPLE);
@@ -42,7 +54,7 @@ public class Client {
             } else {
                 ParsedCommand parsedCommand = commandParser.parseCommand(line);
                 if(parsedCommand != null) {
-                    invoker.invoke(parsedCommand); // Передаем ParsedCommand
+                    invoker.invoke(parsedCommand); // Передаем da.ParsedCommand
                 } else {
                     System.out.println("unknown command, enter 'help' to see the list of commands");
                 }

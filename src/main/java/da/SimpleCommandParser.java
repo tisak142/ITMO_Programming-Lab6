@@ -1,6 +1,9 @@
+package da;
+
 import java.util.Arrays;
 
 public class SimpleCommandParser implements CommandParser {
+
     @Override
     public ParsedCommand parseCommand(String line) {
         String[] parts = line.split("\\s+");
@@ -19,6 +22,6 @@ public class SimpleCommandParser implements CommandParser {
 
     @Override
     public String toString() {
-        return "SimpleCommandParser{}";
+        return "SimpleCommandParser";
     }
 }

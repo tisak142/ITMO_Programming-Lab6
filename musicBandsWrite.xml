@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <musicBands>
     <musicBand>
-        <name>Led Zeppelin</name>
+        <name>Pink Floyd</name>
         <coordinates>
-            <x>15.7</x>
-            <y>500</y>
+            <x>10.5</x>
+            <y>860</y>
         </coordinates>
-        <numberOfParticipants>4</numberOfParticipants>
-        <genre>BLUES</genre>
+        <numberOfParticipants>5</numberOfParticipants>
+        <genre>JAZZ</genre>
         <frontMan>
-            <name>Robert Plant</name>
+            <name>MAXIM</name>
             <birthday>
-                <date>1948-08-20</date>
+                <date>2005-12-12</date>
             </birthday>
-            <hairColor>BLUE</hairColor>
-            <nationality>CHINA</nationality>
+            <hairColor>GREEN</hairColor>
+            <nationality>SPAIN</nationality>
         </frontMan>
     </musicBand>
 </musicBands>

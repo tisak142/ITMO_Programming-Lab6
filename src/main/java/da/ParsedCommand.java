@@ -1,3 +1,5 @@
+package da;
+
 public class ParsedCommand {
     private final String commandName;
     private final String[] args;

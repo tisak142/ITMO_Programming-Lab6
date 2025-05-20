@@ -1,35 +1,57 @@
 package commands;
 
 import OrdinaryClasses.MusicBand;
+import commands.ContextAwareCommand;
 import da.MusicBandConsoleCreator;
+import da.MusicBandParser;
 import da.Receiver;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
 
-public class AddCommand implements Command {
-    private final MusicBandConsoleCreator musicBandConsoleCreator;
-    public final Receiver receiver;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.StringReader;
 
-    public AddCommand(Receiver receiver, MusicBandConsoleCreator musicBandConsoleCreator) {
+public class AddCommand extends ContextAwareCommand {
+    private final Receiver receiver;
+    private final MusicBandConsoleCreator creator;
+
+    public AddCommand(Receiver receiver, MusicBandConsoleCreator creator) {
         this.receiver = receiver;
-        this.musicBandConsoleCreator = musicBandConsoleCreator;
+        this.creator = creator;
     }
 
     @Override
     public void execute(String... args) {
-        if (args.length != 0) {
-            System.err.println("This command does not take any arguments");
-            return;
+        try {
+            MusicBand band = (context != null && context.isScriptMode())
+                    ? parseFromScript()
+                    : creator.createMusicBand();
+
+            if (band != null) {
+                receiver.add(band);
+                System.out.println("Успешно добавлено: " + band.getName());
+            }
+        } catch (Exception e) {
+            System.err.println("Ошибка: " + e.getMessage());
         }
-        MusicBand newBand = musicBandConsoleCreator.createMusicBand();
-        if (newBand != null) {
-            receiver.add(newBand);
-            System.out.println("Music band added successfully.");
-        } else {
-            System.out.println("Failed to add music band.");
+    }
+
+    private MusicBand parseFromScript() throws Exception {
+        StringBuilder xml = new StringBuilder();
+        String line;
+        while ((line = context.readLine()) != null && !line.contains("</musicBand>")) {
+            xml.append(line);
         }
+        if (line != null) xml.append(line);
+
+        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        Document doc = builder.parse(new InputSource(new StringReader(xml.toString())));
+        return MusicBandParser.parse(doc.getDocumentElement());
     }
 
     @Override
     public String getName() {
-        return "Add";
+        return "add";
     }
 }

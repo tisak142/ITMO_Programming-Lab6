@@ -4,27 +4,24 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FileReader implements InputReader {
+public class ScriptFileReader implements InputReader, AutoCloseable {
     private final Scanner scanner;
-    private boolean isScriptMode;
 
-    public FileReader(String filename) throws FileNotFoundException {
+    public ScriptFileReader(String filename) throws FileNotFoundException {
         this.scanner = new Scanner(new File(filename));
-        this.isScriptMode = true;
     }
 
     @Override
     public String readLine() {
-        if (scanner.hasNextLine()) {
-            return scanner.nextLine().trim();
-        }
-        return null;
+        return scanner.hasNextLine() ? scanner.nextLine().trim() : null;
     }
 
+    @Override
     public boolean isScriptMode() {
-        return isScriptMode;
+        return true;
     }
 
+    @Override
     public void close() {
         scanner.close();
     }

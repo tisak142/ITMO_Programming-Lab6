@@ -1,6 +1,7 @@
 package da;
 
 import commands.*;
+import console.InputReader;
 
 import java.util.HashMap;
 
@@ -8,6 +9,7 @@ public class Invoker {
     private static final HashMap<String, Command> commands = new HashMap<>(); // Хранилище команд, где ключ — название команды, а значение — объект команды.
     private final Receiver receiver;
     private final MusicBandConsoleCreator musicBandConsoleCreator;
+    private InputReader currentReader;
 
 
     public Invoker(Receiver receiver, MusicBandConsoleCreator musicBandConsoleCreator) {
@@ -21,7 +23,7 @@ public class Invoker {
         commands.put("remove_by_id", new RemoveByIdCommand(receiver));
         commands.put("clear", new ClearCommand(receiver));
         commands.put("save", new SaveCommand(receiver, System.getenv("WriteMusicBands")));
-//        commands.put("execute_script", new ExecuteScriptCommand();
+        commands.put("execute_script", new ExecuteScriptCommand(receiver, this));
         commands.put("exit", new ExitCommand());
         commands.put("add_if_max", new AddIfMaxCommand(receiver, musicBandConsoleCreator));
         commands.put("add_if_min", new AddIfMinCommand(receiver, musicBandConsoleCreator));
@@ -33,13 +35,23 @@ public class Invoker {
     }
 
     public void invoke(ParsedCommand parsedCommand) {
-        if (parsedCommand != null) {
-            Command command = commands.get(parsedCommand.getCommandName());
-            if (command != null) {
-                command.execute(parsedCommand.getArgs());
-            } else {
-                System.out.println("Unknown command: " + parsedCommand.getCommandName());
-            }
+        Command command = commands.get(parsedCommand.getCommandName());
+        if (command == null) {
+            System.out.println("Unknown command: " + parsedCommand.getCommandName());
+            return;
         }
+        if (command instanceof ContextAwareCommand) {
+            ((ContextAwareCommand) command).setContext(currentReader);
+        }
+
+        command.execute(parsedCommand.getArgs());
+    }
+
+    public void setInputReader(InputReader inputReader) {
+        this.currentReader = inputReader;
+    }
+
+    public InputReader getCurrentReader() {
+        return currentReader;
     }
 }

@@ -10,7 +10,7 @@ add
     <numberOfParticipants>5</numberOfParticipants>
     <genre>JAZZ</genre>
     <frontMan>
-        <name>JACK</name>
+        <frontManName>James</frontManName>
         <birthday>2005-12-12</birthday>
         <hairColor>GREEN</hairColor>
         <nationality>SPAIN</nationality>

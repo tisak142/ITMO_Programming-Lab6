@@ -6,7 +6,7 @@ public class SimpleCommandParser implements CommandParser {
 
     @Override
     public ParsedCommand parseCommand(String line) {
-        String[] parts = line.split("\\s+");
+        String[] parts = line.trim().split("\\s+");
         if (parts.length == 0) {
             return null;
         }

@@ -1,4 +1,4 @@
-package da;
+package parsers;
 
 public class CommandParserFactory {
     public static CommandParser getParser(ParserTypes type) {

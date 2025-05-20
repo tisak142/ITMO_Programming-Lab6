@@ -1,10 +1,10 @@
 package commands;
 
-import OrdinaryClasses.MusicBand;
-import da.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import management.*;
+import xml.DOMMusicBandWriter;
+import xml.DOMWriter;
+import xml.MusicBandWriter;
+import xml.MusicBandXmlConverter;
 
 public class SaveCommand implements Command {
     private final Receiver receiver;

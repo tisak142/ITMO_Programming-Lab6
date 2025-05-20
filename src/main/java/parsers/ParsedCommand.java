@@ -1,4 +1,4 @@
-package da;
+package parsers;
 
 public class ParsedCommand {
     private final String commandName;

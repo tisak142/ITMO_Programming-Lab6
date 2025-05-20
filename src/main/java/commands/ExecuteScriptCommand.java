@@ -3,7 +3,11 @@ package commands;
 import console.ConsoleReader;
 import console.InputReader;
 import console.ScriptFileReader;
-import da.*;
+import management.*;
+import parsers.CommandParser;
+import parsers.CommandParserFactory;
+import parsers.ParsedCommand;
+import parsers.ParserTypes;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;

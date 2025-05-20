@@ -1,8 +1,6 @@
 package commands;
 
-import da.Receiver;
-
-import java.time.LocalDate;
+import management.Receiver;
 
 public class InfoCommand implements Command {
     private final Receiver receiver;

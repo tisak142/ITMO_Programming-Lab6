@@ -1,6 +1,6 @@
 package commands;
 
-import da.Receiver;
+import management.Receiver;
 
 public class ShuffleCommand implements Command {
     private final Receiver receiver;

@@ -1,8 +1,8 @@
 package commands;
 
 import OrdinaryClasses.MusicBand;
-import da.MusicBandConsoleCreator;
-import da.Receiver;
+import management.MusicBandConsoleCreator;
+import management.Receiver;
 
 public class UpdateIdCommand implements Command {
     private final MusicBandConsoleCreator musicBandConsoleCreator;

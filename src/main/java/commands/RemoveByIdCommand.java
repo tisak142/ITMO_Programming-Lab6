@@ -1,8 +1,6 @@
 package commands;
 
-import OrdinaryClasses.MusicBand;
-import da.MusicBandConsoleCreator;
-import da.Receiver;
+import management.Receiver;
 
 public class RemoveByIdCommand implements Command {
     public final Receiver receiver;

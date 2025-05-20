@@ -1,9 +1,13 @@
+package management;
+
 import OrdinaryClasses.*;
 import console.ConsoleReader;
 import console.InputReader;
-import da.*;
+import parsers.CommandParser;
+import parsers.CommandParserFactory;
+import parsers.ParsedCommand;
+import parsers.ParserTypes;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -54,7 +58,7 @@ public class Client {
             } else {
                 ParsedCommand parsedCommand = commandParser.parseCommand(line);
                 if(parsedCommand != null) {
-                    invoker.invoke(parsedCommand); // Передаем da.ParsedCommand
+                    invoker.invoke(parsedCommand); // Передаем parsers.ParsedCommand
                 } else {
                     System.out.println("unknown command, enter 'help' to see the list of commands");
                 }

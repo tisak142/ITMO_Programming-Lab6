@@ -1,6 +1,6 @@
 package commands;
 
-import da.Receiver;
+import management.Receiver;
 
 import java.util.HashMap;
 import java.util.Map;

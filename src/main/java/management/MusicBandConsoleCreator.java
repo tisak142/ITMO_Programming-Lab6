@@ -1,4 +1,4 @@
-package da;
+package management;
 
 import OrdinaryClasses.*;
 
@@ -8,8 +8,6 @@ import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 
 public class MusicBandConsoleCreator {
 

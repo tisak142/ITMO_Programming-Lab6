@@ -1,4 +1,4 @@
-package da;
+package parsers;
 
 public enum ParserTypes {
     SIMPLE

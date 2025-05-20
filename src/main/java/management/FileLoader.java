@@ -1,5 +1,7 @@
+package management;
+
 import OrdinaryClasses.MusicBand;
-import da.MusicBandParser;
+import parsers.MusicBandParser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -37,7 +39,7 @@ public class FileLoader {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
                     bandIndex = i; // Обновляем индекс группы
-                    // 3. Преобразование XML-элемента в объект MusicBand с помощью da.MusicBandParser
+                    // 3. Преобразование XML-элемента в объект MusicBand с помощью parsers.MusicBandParser
                     MusicBand band = MusicBandParser.parse(element);
                     if (band != null) {
                         musicBands.add(band);

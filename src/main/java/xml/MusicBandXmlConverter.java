@@ -1,8 +1,9 @@
-package da;
+package xml;
 
 import OrdinaryClasses.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
 import java.text.SimpleDateFormat;
 
 public class MusicBandXmlConverter implements XmlConverter {

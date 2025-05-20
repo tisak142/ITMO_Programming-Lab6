@@ -1,10 +1,9 @@
 package commands;
 
 import OrdinaryClasses.MusicBand;
-import commands.ContextAwareCommand;
-import da.MusicBandConsoleCreator;
-import da.MusicBandParser;
-import da.Receiver;
+import management.MusicBandConsoleCreator;
+import parsers.MusicBandParser;
+import management.Receiver;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
